@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.dao.CheckItemDao">
+    <insert id="add" parameterType="com.itheima.pojo.CheckItem">
+        insert into t_checkItem(code,name,sex,age,price,type,remark,attention)
+                      values
+        (#{code},#{name},#{sex},#{age},#{price},#{type},#{remark},#{attention})
+       </insert>
+    <select id="SelectByContion" parameterType="String" resultType="com.itheima.pojo.CheckItem">
+        select * from t_checkItem
+        <if test="value != null and value.length >0">
+            where name= #{code} or name = #{name}
+        </if>
+    </select>
+</mapper>
